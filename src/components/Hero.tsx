@@ -8,7 +8,7 @@ const activities = [
   { time: '12 May 16:40', dir: 'OUT', item: 'USP-S | Kill Confirmed (Well-Worn)', color: '#eb4b4b', partner: 'PixelTrader' },
 ]
 
-export function Hero() {
+export function Hero({ onViewDemo }: { onViewDemo?: () => void }) {
   return (
     <section className="hero-section" id="hero">
       <div className="container" style={{ maxWidth: 1120, margin: '0 auto', padding: '0 24px' }}>
@@ -26,6 +26,15 @@ export function Hero() {
             <a className="app-btn app-btn-primary" href="https://github.com/tommi-fish/steam-stash/releases" target="_blank" rel="noopener noreferrer">
               Download
             </a>
+            {onViewDemo && (
+              <a
+                className="app-btn"
+                href="#"
+                onClick={(e) => { e.preventDefault(); onViewDemo() }}
+              >
+                Live Demo
+              </a>
+            )}
             <a className="app-btn app-btn-ghost" href="https://github.com/tommi-fish/steam-stash" target="_blank" rel="noopener noreferrer">
               View Source
             </a>
