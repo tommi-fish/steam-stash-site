@@ -1,0 +1,103 @@
+/* ============================================================
+   Steam Stash — Oklch Monochrome Theme
+   Ported directly from src/renderer/theme.css
+   Shared design language between app and site
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Ink scale — warm-cool neutral, near black with a whisper of blue */
+  --ink-0:  oklch(0.08 0.005 260);
+  --ink-1:  oklch(0.11 0.005 260);
+  --ink-2:  oklch(0.14 0.006 260);
+  --ink-3:  oklch(0.18 0.008 260);
+  --ink-4:  oklch(0.24 0.01 260);
+  --ink-5:  oklch(0.34 0.012 260);
+  --ink-6:  oklch(0.50 0.015 260);
+  --ink-7:  oklch(0.70 0.012 260);
+  --ink-8:  oklch(0.88 0.008 260);
+  --ink-9:  oklch(0.97 0.004 260);
+  --bone:   oklch(0.96 0.005 80);
+
+  /* Accent — red by default, overridable via data-accent */
+  --accent:        oklch(0.66 0.22 25);
+  --accent-soft:   oklch(0.66 0.22 25 / 0.14);
+  --accent-faint:  oklch(0.66 0.22 25 / 0.05);
+  --accent-glow:   oklch(0.72 0.22 25 / 0.45);
+  --accent-ink:    oklch(0.18 0.06 25);
+
+  --positive: oklch(0.74 0.16 145);
+  --negative: oklch(0.66 0.22 25);
+  --warn:     oklch(0.78 0.16 75);
+
+  --hair:        1px solid oklch(0.24 0.01 260);
+  --hair-soft:   1px solid oklch(0.18 0.008 260);
+  --hair-strong: 1px solid oklch(0.34 0.012 260);
+
+  --font-sans: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--ink-0);
+  color: var(--ink-8);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  letter-spacing: -0.005em;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --ink-0:  oklch(0.97 0.004 260);
+    --ink-1:  oklch(0.93 0.005 260);
+    --ink-2:  oklch(0.88 0.008 260);
+    --ink-3:  oklch(0.82 0.01 260);
+    --ink-4:  oklch(0.70 0.012 260);
+    --ink-5:  oklch(0.55 0.015 260);
+    --ink-6:  oklch(0.40 0.015 260);
+    --ink-7:  oklch(0.25 0.01 260);
+    --ink-8:  oklch(0.15 0.008 260);
+    --ink-9:  oklch(0.08 0.005 260);
+    --bone:   oklch(0.15 0.008 260);
+  }
+}
+
+/* Accent colours */
+[data-accent="red"]    { --accent: oklch(0.66 0.22 25);  --accent-ink: oklch(0.18 0.06 25); }
+[data-accent="amber"]  { --accent: oklch(0.78 0.18 75);  --accent-ink: oklch(0.20 0.06 75); }
+[data-accent="lime"]   { --accent: oklch(0.78 0.18 130); --accent-ink: oklch(0.18 0.06 130); }
+[data-accent="green"]  { --accent: oklch(0.76 0.18 155); --accent-ink: oklch(0.18 0.06 155); }
+[data-accent="teal"]   { --accent: oklch(0.72 0.16 195); --accent-ink: oklch(0.18 0.06 195); }
+[data-accent="cyan"]   { --accent: oklch(0.74 0.14 210); --accent-ink: oklch(0.18 0.06 210); }
+[data-accent="blue"]   { --accent: oklch(0.66 0.20 260); --accent-ink: oklch(0.18 0.06 260); }
+[data-accent="violet"] { --accent: oklch(0.66 0.22 300); --accent-ink: oklch(0.18 0.06 300); }
+[data-accent="pink"]   { --accent: oklch(0.68 0.20 350); --accent-ink: oklch(0.18 0.06 350); }
+[data-accent="rose"]   { --accent: oklch(0.68 0.20 10);  --accent-ink: oklch(0.18 0.06 10); }
+
+/* Accent shorthands for site styles */
+[data-accent="red"]    { --accent-h: 25; }
+[data-accent="amber"]  { --accent-h: 75; }
+[data-accent="lime"]   { --accent-h: 130; }
+[data-accent="green"]  { --accent-h: 155; }
+[data-accent="teal"]   { --accent-h: 195; }
+[data-accent="cyan"]   { --accent-h: 210; }
+[data-accent="blue"]   { --accent-h: 260; }
+[data-accent="violet"] { --accent-h: 300; }
+[data-accent="pink"]   { --accent-h: 350; }
+[data-accent="rose"]   { --accent-h: 10; }
